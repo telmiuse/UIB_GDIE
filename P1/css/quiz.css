@@ -1,22 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
+*, *::before, *::after{
+    box-sizing: border-box;
+    font-family: Gotham Rounded;
 }
 
-body {
-    background-color: #333
+/*Predefinim colors*/
+:root{
+    --hue-neutral: 200;
+    --hue-malament: 0;
+    --hue-correcte: 145;
 }
 
+/* Panell del quiz*/
+.body{
+    display: flex;
+    width: 800px;
+    max-width: 80%;
+    background-color: hsl(var(--hue), 100%, 20%);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+    --hue: var(--hue-neutral);
+}
+
+.quiz{
+    gap: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.butn{
+    background-color: darkgoldenrod;
+    gap: 10px;
+    max-width: 80%;
+    border-radius: 15px;
+    padding: 5px 10px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.butn:hover{
+    border-color: black;
+}
+/*Si la resposta es correcte es posa el panell en verd*/
+.body.correcte {
+    --hue: var(--hue-correcte);
+}
+
+/*Si la resposta es incorrecte es posa el panell en vermell*/
+.body.malament {
+    --hue: var(--hue-malament);
+}
+
+.botons-opcions{
+    display: grid;
+    gap: 20px;
+}
+
+.quiz-preguntes{
+    gap: 10px;
+    border-radius: 15px;
+    max-width: 80%;
+    padding: 10px;
+}
+/*
 .container {
     background-color: #555;
     color: #ddd;
     border-radius: 10px;
     padding: 20px;
     font-family: 'Montserrat', sans-serif;
-    max-width: 700px
+    max-width :80%;
 }
 
 .container>p {

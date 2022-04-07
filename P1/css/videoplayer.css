@@ -1,13 +1,15 @@
 .videoplayer {
-  position: relative;
-  display: block;
+    position: relative;
+    display: block;
+    float: left;
+    width: 65%;
 }
 .videoplayer video {
   max-width: 100%;
   max-height: 100%;
 }
 .videoplayer .controls {
-  position: absolute;
+  position: relative;
   bottom: 0;
   display: flex;
   width: 100%;
@@ -76,4 +78,11 @@
 
 .tooltip {
   z-index: 1400;
+}
+
+.quiz {
+    position: relative;
+    float: right;
+    width: 25%;
+    background-color:burlywood;
 }
