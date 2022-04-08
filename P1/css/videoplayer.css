@@ -86,3 +86,22 @@
     width: 25%;
     background-color:burlywood;
 }
+.time{
+    color : white;
+}
+span.muteButton {
+    background: url(https://www.svgrepo.com/show/184526/volume-music-and-multimedia.svg) no-repeat top left;
+    background-size: contain;
+    cursor: pointer;
+    display: inline-block;  
+    height: 30px;
+    width: 30px;
+}
+span.volume {
+    background: url(https://www.svgrepo.com/show/184525/volume-music-and-multimedia.svg) no-repeat top left;
+    background-size: contain;
+    cursor: pointer;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}

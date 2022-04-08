@@ -14,10 +14,8 @@
     <!--Carpetes internes-->
     <link href="dist/css/videoplayer.min.css" rel="stylesheet">
     <link href="css/quiz.css" rel="stylesheet">
-    <script defer src="js/quiz.js"></script>
     <!-- Bootstrap 5 video player’s JavaScript and CSS files -->
     <link rel="stylesheet" href="css/videoplayer.css" />
-    <script src="js/videoplayer.min.js"></script>
 
 </head>
 
@@ -33,49 +31,11 @@
                 </h1>
             </div>
 
-            <!-- Quest -->
-            <!--<div class="container mt-sm-5 my-1">
-                <div class="question ml-sm-5 pl-sm-5 pt-2">-->
-            <!-- Pregunta-->
-            <!--<div class="py-2 h5">
-                <b>Q. which option best describes your job role?</b>
-            </div>-->
-            <!-- Posibles respostes-->
-            <!--<div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
-                    <label class="options"> Small Business Owner or Employee
-                        <input type="radio" name="radio">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="options"> Nonprofit Owner or Employee
-                        <input type="radio" name="radio">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="options"> Journalist or Activist
-                        <input type="radio" name="radio">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="options"> Other
-                        <input type="radio" name="radio">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-            </div>-->
-            <!-- Botons de siguiente o anterior-->
-            <!--<div class="d-flex align-items-center pt-3">
-                    <div id="prev">
-                        <button class="btn btn-primary">Previous</button>
-                    </div>
-                    <div class="ml-auto mr-sm-5">
-                        <button class="btn btn-success">Next</button>
-                    </div>
-                </div>
-            </div>-->
             <!-- Video player-->
             <div class="videoplayer" id="myPlayer">
 
                 <div class="ratio ratio-16x9 bg-dark">
-                    <video id="vid" class="video"
-                           src="http://www.example.com/waterfall-video.mp4" type="video/mp4 "></video>
+                    <video id="vid" class="video" src="media/quizVideo.mp4" type="video/mp4 "></video>
                 </div>
 
                 <!-- CONTROLS DEL VIDEO -->
@@ -85,56 +45,42 @@
                     <button id="play" class="btn btn-lg btn-video-playpause" data-bs-toggle="tooltip" title="Play Video" type="button" onclick="startPlayback()">
                         <i class="bi bi-play-fill"></i>
                     </button>
-                    <button id="pause" class="btn btn-lg btn-video-playpause" data-bs-toggle="tooltip" title="Play Video" type="button" onclick="pausePlayback()" hidden>
+                    <button id="pause" class="btn btn-lg btn-video-playpause" data-bs-toggle="tooltip" title="Pause Video" type="button" onclick="pausePlayback()" hidden>
                         <i class="bi bi-pause-fill"></i>
                     </button>
 
 
-                    <!-- BARRA DE PROGRÉS DES VIDEO-->
+                    <!-- DURACIÓ  VIDEO-->
                     <div class="px-1 w-100">
-                        <div class="progress w-100">
-                            <div class="progress-bar">
-                                <progress id="progressBar" value=0>
-                                    <span id="prog"></span>
-                                </progress>
-
-                            </div>
+                        <div class="time">
+                            <time id="time-elapsed">00:00</time>
+                            <span> / </span>
+                            <time id="duration">00:00</time>
                         </div>
                     </div>
 
-                    <!-- BOTÓ "Pincture in picture"-->
-                    <button class="btn btn-lg btn-video-pip" title="Play picture in picture">
-                        <i class="bi bi-pip"></i>
+                    <button id="Mute" title="Volume" onclick="updateMute()" style=" background-color: #302c2c">
+                        <span id="muteButton" class="muteButton" hidden></span>
+                        <span id="volumeButton" class="volume" hidden></span>
                     </button>
-
-                    <!-- BOTÓ "Pincture in picture"-->
-                    <button class="btn btn-lg btn-video-fullscreen" title="Full Screen">
-                        <i class="bi bi-arrows-fullscreen"></i>
-                    </button>
-
+    
                     <div class="dropup">
                         <!-- SO-->
-                        <button class="btn btn-lg btn-video-volume" data-bs-toggle="dropdown" title="Volume">
-                            <i class="bi bi-volume-mute-fill"></i>
-                        </button>
-
                         <!-- DESPLEGABLE DEL SO-->
-                        <div class="dropdown-menu dropdown-menu-end dropup-volume dropdown-menu-dark">
-                            <input class="form-range form-range-volume" type="range">
+                        <div id="VolumenMenu">
+                            <input id="volumen" class="form-range-volume" type="range" max="1" min="0" step="0.01">
                         </div>
-
                     </div>
 
                 </div>
             </div>
             <!--QUIZ-->
             <div class="quiz">
-                
                 <div id="titol-quiz">
                     <h1 style="text-align: center">QUIZ</h1>
                 </div>
                 <div style="text-align: center" id="quiz-preguntes">Pregunta</div>
-                <div id=" quiz-botons-resposta" class="botons-opcions" >
+                <div id=" quiz-botons-resposta" class="botons-opcions">
                     <button class="butn">Resposta 1</button>
                     <button class="butn">Resposta 2</button>
                     <button class="butn">Resposta 3</button>
@@ -143,64 +89,12 @@
             </div>
         </div>
     </div>
-    
+
     <!--!!!!!!!! IMPORTANT !!!!!!!-->
     <!-- Class="butn" esta fet aposta per editar únicament els botons del quiz!!!!!-->
+    <!--Script-->
+    <script src="js/index.js"></script>
 
-    <!-- Scripts video -->
-    <script>
-        document.addEventListener("DOMContentLoaded", setup, false); 
-
-        //inicio
-        function setup() {
-            debugger;
-
-            var vid = document.getElementById("vid");
-            //aseguramos obtener toda la informacion sobre el video
-            vid.onloadedmetadata = (event) => {
-                console.log('Metadatos cargados.');
-            };
-
-            vid.addEventListener("timeupdate", showProgress, false);
-
-            var progressBar = document.getElementById("progressBar");
-            if (progressBar && progressBar.value == 0) {
-                progressBar.max = parseInt(vid.duration);
-            }
-        }
-        
-        // progress bar
-        function showProgress() {
-            // set progress element's value
-            var time = Math.round(this.currentTime);
-            if (progressBar && progressBar.max) {
-                progressBar.value = time;
-            } else {
-                // provide text fallback
-                document.getElementById("prog").tex = time + " seconds";
-            }
-        }
-
-        // start video
-        function startPlayback() {
-            vid.play();
-            document.getElementById("play").hidden = true;
-            document.getElementById("pause").hidden = false;
-        }
-        // pause video
-        function pausePlayback() {
-            vid.pause();
-            document.getElementById("play").hidden = false;
-            document.getElementById("pause").hidden = true;
-        }
-
-        function fullscreen() {
-            document.getElementById("vid").requestFullscreen
-        }
-
-
-
-    </script>
 </body>
 
 
