@@ -1,4 +1,3 @@
-
 *, *::before, *::after{
     box-sizing: border-box;
     font-family: Gotham Rounded;
@@ -35,10 +34,11 @@
     border-radius: 15px;
     padding: 5px 10px;
     box-shadow: 0 0 10px 2px;
+    
 }
 
 .butn:hover{
-    border-color: black;
+    background-color: rgb(240, 193, 75);
 }
 /*Si la resposta es correcte es posa el panell en verd*/
 .body.correcte {
