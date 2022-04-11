@@ -1,15 +1,14 @@
 const contenedor  = document.getElementById("quiz");
-const botonRes = document.getElementById("boton");
-const resultadoTest = document.getElementById("resultado");
+const resultadoTest = document.getElementById("quiz");
 
 const preguntas = [
   {
-    pregunta: "1. En que hábitat vive nemo?",
+    pregunta: "A qué pertenece el logo?",
     respuestas: {
-      a: "Agua",
-      b: "Aire",
-      c: "Tierra",
-      d: "Fuego"
+      a: "Juegos olímpicos",
+      b: "Juegos paralímpicos",
+      c: "Juegos panamericanos",
+      d: "Juegos del hambre"
     },
     respuestaCorrecta: "a"
   }
@@ -27,9 +26,12 @@ function mostrarTest() {
       respuestas.push( 
         /*Mezclamos en una cadena de texto las diferentes etiquetas html con los valores que queremos darle*/
         `<label> 
-          <input type="radio" name="${numeroDePregunta}" value="${letraRespuesta}" /> 
-          ${letraRespuesta} : ${preguntaActual.respuestas[letraRespuesta]} 
-        </label>`
+          <input type="button" 
+          style="text-align:center" 
+          name="${numeroDePregunta}" 
+          value="${preguntaActual.respuestas[letraRespuesta]}" /> 
+        </label>
+        <br>`
       );
     }
 
@@ -46,32 +48,38 @@ function mostrarTest() {
 
 mostrarTest()
 
-/*
-function mostrarResultado() {
-  const respuestas = contenedor.querySelectorAll(".respuestas");
-  let respuestasCorrectas = 0;
 
+function mostrarResultado() {
+  const respuestas = contenedor.querySelectorAll(".respuestas"); /*Cogemos las respuestas del div */
+  let respuestasCorrectas = 0; /* Contador en caso de que la respuesta se correcta */
+
+  /* Recorremos las preguntas para */
   preguntas.forEach((preguntaActual, numeroDePregunta) => {
-    const todasLasRespuestas = respuestas[numeroDePregunta];
-    const checkboxRespuestas = `input[name='${numeroDePregunta}']:checked`;
-    const respuestaElegida = (
+    const todasLasRespuestas = respuestas[numeroDePregunta]; /* Accedemos a todas las respuestas */
+    const checkboxRespuestas = `input[name='${numeroDePregunta}']:checked`; /*comprueba la casilla que ha marcado el usuario*/
+    
+    const respuestaElegida = ( /*Comprobamos la respuesta que el usuario ha marcado*/
       todasLasRespuestas.querySelector(checkboxRespuestas) || {}
     ).value;
 
+    /* Miramos que la respuesta del usuario sea buena o mala  */
     if (respuestaElegida === preguntaActual.respuestaCorrecta) {
       respuestasCorrectas++;
-
       respuestas[numeroDePregunta].style.color = "blue";
+      
     } else {
       respuestas[numeroDePregunta].style.color = "red";
     }
   });
 
-  resultadoTest.innerHTML =
-    "Usted ha acertado " +
-    respuestasCorrectas +
-    " preguntas de un total de " +
-    preguntas.length;
+  resultadoTest.push(
+    `<label> 
+      <input  
+          style="text-align:center" 
+          name="${respuestasCorrectas}" 
+          value="${respuestasCorrectas}" de 10 /> 
+        </label>`
+  );
 }
 
-botonRes.addEventListener("click", mostrarResultado); */
+mostrarResultado();
