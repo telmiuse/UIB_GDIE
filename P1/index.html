@@ -5,6 +5,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta http-equiv="X-UA-Compatible" conetent="ie=edge">
     <!-- Bootstrap 5 framework and Bootstrap Icons in the document -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="/path/to/cdn/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="/path/to/cdn/bootstrap.min.css" />
     <script src="/path/to/cdn/bootstrap.bundle.min.js"></script>
@@ -14,14 +15,15 @@
     <!--Carpetes internes-->
     <link href="dist/css/videoplayer.min.css" rel="stylesheet">
     <link href="css/quiz.css" rel="stylesheet">
-    <script defer src="js/quiz.js"></script>
+    
+    <script src="js/Game.js"></script>
 
     <!-- Bootstrap 5 video player’s JavaScript and CSS files -->
     <link rel="stylesheet" href="css/videoplayer.css" />
 
 </head>
 
-<body>
+<body >
 
     <div class="container">
         <div class="row g-4">
@@ -34,10 +36,13 @@
             </div>
 
             <!-- Video player-->
-            <div class="videoplayer" id="myPlayer">
+            <div  class="videoplayer" id="myPlayer">
 
                 <div class="ratio ratio-16x9 bg-dark">
-                    <video id="vid" class="video" src="media/quizVideo.mp4" type="video/mp4 "></video>
+                    <video  id="vid" src="media/videoTrivia.mp4" type="video/mp4 ">
+                        <track kind="chapters" src="resources/Chapters1.vtt" label="capitulos subtitles" default>
+                        <track kind="metadata" src="resources/Juego1.vtt" label="preguntas subtitles" default>
+                    </video>
                 </div>
 
                 <!-- CONTROLS DEL VIDEO -->
@@ -78,19 +83,15 @@
             </div>
 
             <!--QUIZ-->
-            <div id="quiz" class="quiz">
-                
-                <!-- <div id="titol-quiz">
+            <div id="quiz" class="quiz">   
+                 <div id="titol-quiz">
                     <h1 style="text-align: center">QUIZ</h1>
                 </div>
                 <div style="text-align: center" class="quiz-preguntes"></div>
-                <div id=" quiz-botons-resposta" class="botons-opcions" > <br>
-                    <center><button class="butn">Resposta 1</button></center>
-                    <center><button class="butn">Resposta 2</button></center>
-                    <center><button class="butn">Resposta 3</button></center>
-                    <center><button class="butn">Resposta 4</button></center>
-                </div>-->
-                
+                <p class="pregunta">Cuando el vídeo este pause aquí saldrá una pregunta...</p>
+                    <div class="respuestas" id="respuestas">
+
+                    </div>
             </div> 
             <script src="quiz.js"></script>
         </div>
@@ -99,8 +100,9 @@
     <!--!!!!!!!! IMPORTANT !!!!!!!-->
     <!-- Class="butn" esta fet aposta per editar únicament els botons del quiz!!!!!-->
     <!--Script-->
+  
     <script src="js/index.js"></script>
-
+    <script type="text/javascript"> startGame(); </script>
 </body>
 
 

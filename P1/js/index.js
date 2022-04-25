@@ -9,7 +9,6 @@ const iconVolume = document.getElementById("volumeButton");
 
 //inicio
 function setup() {
-    debugger;
     const videoDuration = Math.round(vid.duration);
     duration.setAttribute('max', videoDuration);
     const time = formatTime(videoDuration);
