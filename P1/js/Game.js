@@ -14,6 +14,7 @@ function startGame() {
             if (cue) {
                 if (cue.text == 'Final') {
                     seleccionable = false;
+                    rellenarRespuestasVacias();
                     mostrarRespuestas();
                 } else {
                     preguntas.push(newPregunta(cue.text));
@@ -35,7 +36,7 @@ function showPregunta(pregunta) {
         btn[i] = document.createElement("BUTTON");
         btn[i].setAttribute("class", "btn btn-info btnrespuesta animated bounceIn");           
         btn[i].setAttribute("id", i.toString());
-        btn[i].innerHTML = btn[i].id.toString() + ".  " + pregunta.respuestas[i];
+        btn[i].innerHTML = pregunta.respuestas[i];
         btn[i].onclick = function () {
             //Si todavía no ha terminado el juego, seleccionamos
             if (seleccionable) {
@@ -63,10 +64,9 @@ function showPregunta(pregunta) {
 }
 
 function mostrarRespuestas() {
-    //var label = document.createElement("LABEL");
-    //label.setAttribute("id", "indice-preg");
-    //label.textContent = "Indice de preguntas";
-    //document.getElementById("resultadosQuiz").appendChild(label);
+    var texto = document.getElementById("resultados");
+    texto.innerHTML = "Indice de preguntas:"
+    document.getElementById("resultadosQuiz").appendChild(texto);
 
     var btn = []
     $("#resultadosQuiz").html('');
@@ -85,6 +85,15 @@ function mostrarRespuestas() {
             showPregunta(preguntas[this.id]);
         }
         document.getElementById("resultadosQuiz").appendChild(btn[i]);
+    }
+}
+
+//si han quedado preguntas sin contestar, se ponen como falsas.
+function rellenarRespuestasVacias() {
+    for (var i = 0; i < preguntas.length; i++) {
+        if (respuestasContestadas[i] == null) {
+            respuestasContestadas[i] = false;
+        }
     }
 }
 
