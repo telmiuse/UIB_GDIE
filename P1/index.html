@@ -36,11 +36,10 @@
             </div>
 
             <!-- Video player-->
-            <div  class="videoplayer" id="myPlayer">
+            <div class="videoplayer" id="myPlayer">
 
                 <div class="ratio ratio-16x9 bg-dark">
-                    <video  id="vid" src="media/videoTrivia.mp4" type="video/mp4 ">
-                        <track kind="chapters" src="resources/Chapters1.vtt" label="capitulos subtitles" default>
+                    <video id="vid" src="media/videoTrivia.mp4" type="video/mp4 ">
                         <track kind="metadata" src="resources/Juego1.vtt" label="preguntas subtitles" default>
                     </video>
                 </div>
@@ -70,7 +69,7 @@
                         <span id="muteButton" class="muteButton" hidden></span>
                         <span id="volumeButton" class="volume" hidden></span>
                     </button>
-    
+
                     <div class="dropup">
                         <!-- SO-->
                         <!-- DESPLEGABLE DEL SO-->
@@ -83,16 +82,21 @@
             </div>
 
             <!--QUIZ-->
-            <div id="quiz" class="quiz">   
-                 <div id="titol-quiz">
+            <div id="quiz" class="quiz">
+                <div id="titol-quiz">
                     <h1 style="text-align: center">QUIZ</h1>
                 </div>
                 <div style="text-align: center" class="quiz-preguntes"></div>
-                <p class="pregunta">Cuando el vídeo este pause aquí saldrá una pregunta...</p>
-                    <div class="respuestas" id="respuestas">
 
+                <div class="respuestas" id="respuestas">
+                </div>
+
+                <div id="indicePreg" style="margin-top: 30px">
+                    <div class="resultadosQuiz" id="resultadosQuiz">
                     </div>
-            </div> 
+                </div>
+
+            </div>
             <script src="quiz.js"></script>
         </div>
     </div>

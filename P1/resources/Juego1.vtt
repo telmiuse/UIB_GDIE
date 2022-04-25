@@ -1,43 +1,48 @@
 WEBVTT
 
-p1
 00:00:00.000 --> 00:00:20.000
 {
-	"n_pregunta" : 1,
+	"n_pregunta" : 0,
 	"pregunta" : "¿QUE CIUDAD DE CHINA ES?",
 	"respuesta_correcta" : 2,
 	"respuestas" : [
-		{"respuesta" : "SHANGHÁI"},
-		{"respuesta" : "CANTÓN"},
-		{"respuesta" : "BEIJING"}
+		"SHANGHÁI",
+		"CANTÓN",
+		"BEIJING"
 	],
 	"pista" : "pistas/p1.png"
 }
 
-p2
 00:00:30.000 --> 00:00:45.000
 {
-	"n_pregunta" : 2,
+	"n_pregunta" : 1,
 	"pregunta" : "¿QUE CIUDAD DE BRASIL ES?",
 	"respuesta_correcta" : 2,
 	"respuestas" : [
-		{"respuesta" : "RIO DE JANEIRO"},
-		{"respuesta" : "BRASILIA"},
-		{"respuesta" : "SAO PAULO"}
+		"RIO DE JANEIRO",
+		"BRASILIA",
+		"SAO PAULO"
 	],
 	"pista" : "pistas/p1.png"
 }
 
-p3
-00:00:45.000 --> 00:00:45.000
+00:00:45.000 --> 00:01:00.000
 {
-	"n_pregunta" : 3,
+	"n_pregunta" : 2,
 	"pregunta" : "¿QUE CIUDAD DE EL SALVADOR ES?",
-	"respuesta_correcta" : 1,
+	"respuesta_correcta" : 0,
 	"respuestas" : [
-		{"respuesta" : "SAN MIGUEL"},
-		{"respuesta" : "SAN SALVADOR"},
-		{"respuesta" : "SANTA ANA"}
-	],
+		"SAN MIGUEL",
+		"SAN SALVADOR",
+		"SANTA ANA"
+	],	
 	"pista" : "pistas/p1.png"
 }
+
+
+
+
+
+
+00:01:00.000 --> 00:01:30.000
+Final

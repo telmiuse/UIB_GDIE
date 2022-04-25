@@ -57,10 +57,6 @@ function updateMute() {
     }
 }
 
-//function fullscreen() {
-//    document.getElementById("vid").requestFullscreen
-//}
-
 //utils
 // formatTime takes a time length in seconds and returns the time in
 // minutes and seconds
